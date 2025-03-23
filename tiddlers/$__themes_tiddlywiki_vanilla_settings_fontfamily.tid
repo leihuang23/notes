@@ -1,0 +1,4 @@
+title: $:/themes/tiddlywiki/vanilla/settings/fontfamily
+type: text/vnd.tiddlywiki
+
+-apple-system, BlinkMacSystemFont, "Helvetica Neue", "PingFang SC", "Microsoft YaHei", "Source Han Sans SC", "Noto Sans CJK SC", "WenQuanYi Micro Hei", sans-serif
