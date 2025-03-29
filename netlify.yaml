@@ -1,4 +1,0 @@
-redirects:
-  - from: "https://notes.lei.moi/*"
-    to: "https://lei.moi/:splat"
-    status: 301
