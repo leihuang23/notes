@@ -1,4 +1,4 @@
 title: $:/config/DefaultSidebarTab
 type: text/vnd.tiddlywiki
 
-$:/core/ui/SideBar/Recent
+$:/core/ui/SideBar/Open
