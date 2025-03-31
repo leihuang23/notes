@@ -1,43 +1,47 @@
 {:tasks
  {default {:doc "List available commands"
-           :task (println "Available tasks:")}
+           :task (println "🔍 Available tasks:")}
 
   build {:doc "Build the TiddlyWiki"
-         :task (shell {:dir (System/getProperty "user.home")}
-                      "tiddlywiki notes --build index")}
+         :task (do
+                 (println "🔨 Building TiddlyWiki...")
+                 (shell {:dir (System/getProperty "user.home")}
+                        "tiddlywiki notes --build index")
+                 (println "✅ TiddlyWiki built successfully!"))}
 
   dev {:doc "Start development server on port 8080"
        :requires ([babashka.process :refer [shell process]])
        :task (do
-               (println "Starting TiddlyWiki development server...")
+               (println "📋 Starting TiddlyWiki development server...")
 
                ;; Check if port is in use and kill processes if needed
                (let [port-check (process {:out :string} "lsof -ti:8080")]
                  (let [result (deref port-check)]
                    (when (zero? (:exit result))
-                     (println "Port 8080 is in use. Killing processes...")
+                     (println "🔴 Port 8080 is in use. Killing processes...")
                      ;; Use a separate shell command to kill processes
                      (shell "pkill -f \"tiddlywiki.*--listen\"")
-                     (println "Processes using port 8080 have been terminated.")
+                     (println "✅ Processes using port 8080 have been terminated.")
                      (Thread/sleep 1000))))
 
                ;; Start server and open browser
                (let [home-dir (System/getProperty "user.home")
                      server-process (process {:dir home-dir}
                                              "tiddlywiki notes --listen")]
-                 (println "TiddlyWiki server starting...")
+                 (println "🚀 TiddlyWiki server starting...")
                  (Thread/sleep 2000)
-                 (println "Opening browser at http://127.0.0.1:8080")
+                 (println "🌐 Opening browser at http://127.0.0.1:8080")
                  (shell "open http://127.0.0.1:8080")
-                 (println "Server running. Press Ctrl+C to stop.")
+                 (println "💻 Server running. Press Ctrl+C to stop.")
                  (deref server-process)))}
 
   upload {:doc "Build and upload changes"
           :depends [build]
           :task (do
-                  (println "Uploading changes to repository...")
+                  (println "📦 Uploading changes to repository...")
                   (shell "git add .")
+                  (println "💾 Committing changes...")
                   (shell "git commit -m \"update notes\"")
-                  (println "Pushing to remote repository...")
+                  (println "🚀 Pushing to remote repository...")
                   (shell "git push")
-                  (println "Upload complete!"))}}}
+                  (println "✅ Upload complete!"))}}}
