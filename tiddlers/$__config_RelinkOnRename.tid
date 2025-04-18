@@ -1,4 +1,6 @@
+created: 20250401131309745
+modified: 20250401131309745
 title: $:/config/RelinkOnRename
 type: text/vnd.tiddlywiki
 
-yes
+no

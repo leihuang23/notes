@@ -1,5 +1,5 @@
 created: 20250329192339413
-modified: 20250401070922103
+modified: 20250412153653875
 tags: 
 title: About
 type: text/vnd.tiddlywiki
@@ -7,6 +7,8 @@ type: text/vnd.tiddlywiki
 [img[apply-min]]
 
 Hi there, I am Lei.
+
+<$hello/>
 
 This is an archive of my scattered thoughts and notes.
 
